@@ -515,9 +515,9 @@
                         deferred = $q.defer();
                     } else {
                         deferred = $q.defer();
-                        $http.get(o.url, o.ajax).success(function() {
-                            deferred.resolve(arguments);
-                            handlePrefetchResponse(arguments);
+                        $http.get(o.url, o.ajax).success(function(data) {
+                            deferred.resolve(data);
+                            handlePrefetchResponse(data);
                         });
                     }
                     return deferred;

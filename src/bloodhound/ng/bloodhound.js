@@ -68,10 +68,10 @@
         else {
           deferred = $q.defer();
 
-          $http.get(o.url, o.ajax).success(function() {
-            deferred.resolve(arguments);
+          $http.get(o.url, o.ajax).success(function(data) {
+            deferred.resolve(data);
 
-            handlePrefetchResponse(arguments);
+            handlePrefetchResponse(data);
           });
         }
 
