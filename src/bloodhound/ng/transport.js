@@ -53,12 +53,12 @@
           // under the pending request threshold, so fire off a request
           else if (pendingRequestsCount < maxPendingRequests) {
             pendingRequestsCount++;
-            pendingRequests[url] = this._send(url, o).success(function() {
-              done(arguments);
-              always(arguments);
+            pendingRequests[url] = this._send(url, o).success(function(data) {
+              done(data);
+              always();
             }).error(function() {
-              fail(arguments);
-              always(arguments);
+              fail(data);
+              always();
             });
           }
 

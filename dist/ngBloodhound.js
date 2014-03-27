@@ -209,12 +209,12 @@
                             req.success(done).error(fail);
                         } else if (pendingRequestsCount < maxPendingRequests) {
                             pendingRequestsCount++;
-                            pendingRequests[url] = this._send(url, o).success(function() {
-                                done(arguments);
-                                always(arguments);
+                            pendingRequests[url] = this._send(url, o).success(function(data) {
+                                done(data);
+                                always();
                             }).error(function() {
-                                fail(arguments);
-                                always(arguments);
+                                fail(data);
+                                always();
                             });
                         } else {
                             this.onDeckRequestArgs = [].slice.call(arguments, 0);
