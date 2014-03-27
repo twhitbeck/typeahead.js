@@ -14,6 +14,16 @@ var semver = require('semver'),
       'src/bloodhound/options_parser.js',
       'src/bloodhound/bloodhound.js'
       ],
+      ngBloodhound: [
+        'src/bloodhound/version.js',
+        'src/bloodhound/ng/tokenizers.js',
+        'src/bloodhound/ng/lru_cache.js',
+        'src/bloodhound/ng/persistent_storage.js',
+        'src/bloodhound/ng/transport.js',
+        'src/bloodhound/ng/search_index.js',
+        'src/bloodhound/ng/options_parser.js',
+        'src/bloodhound/ng/bloodhound.js'
+      ],
       typeahead: [
       'src/typeahead/html.js',
       'src/typeahead/css.js',
@@ -63,6 +73,19 @@ module.exports = function(grunt) {
         },
         src: files.common.concat(files.bloodhound),
         dest: '<%= buildDir %>/bloodhound.min.js'
+      },
+      ngBloodhound: {
+        options: {
+          enclose: {
+            'window.angular': 'angular',
+            'window._': '_'
+          },
+          mangle: false,
+          beautify: true,
+          compress: false
+        },
+        src: files.ngBloodhound,
+        dest: '<%= buildDir %>/ngBloodhound.js'
       },
       typeahead: {
         options: {
