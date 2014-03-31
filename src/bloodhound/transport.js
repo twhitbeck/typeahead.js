@@ -17,7 +17,7 @@ var Transport = (function() {
     o = o || {};
 
     this._send = o.transport ? callbackToDeferred(o.transport) : $.ajax;
-    this._get = o.rateLimiter ? o.rateLimiter(this._get) : this._get;
+    this.get = o.rateLimiter ? o.rateLimiter(this.get) : this.get;
   }
 
   // static methods
